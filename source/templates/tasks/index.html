@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="mb-4">
+    <h1 class="h3">Все задачи</h1>
+    <p class="text-body-secondary mb-0">Список задач и их текущий статус</p>
+</div>
+<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-3">
+    {% for task in tasks %}
+    <div class="col">
+        <article class="card h-100">
+            <div class="card-body d-flex flex-column">
+                <p class="small text-body-secondary mb-2">Задача №{{ task.pk }}</p>
+                <h2 class="h5 text-break"><a class="text-decoration-none" href="{% url 'tasks_detail' task.pk %}">{{ task.summary }}</a></h2>
+                <div class="d-flex flex-wrap align-items-center gap-2 mb-3">
+                    <span class="small text-body-secondary text-break">{{ task.type.type_name }}</span>
+                    <span class="badge text-wrap {% if task.status.status_name == 'New' %}text-bg-primary{% elif task.status.status_name == 'Done' %}text-bg-success{% else %}text-bg-secondary{% endif %}">{{ task.status.status_name }}</span>
+                </div>
+                <div class="small text-body-secondary mt-auto">
+                    <p class="mb-1">Создано: {{ task.created_at|date:"d.m.Y H:i" }}</p>
+                    <p class="mb-0">Изменено: {{ task.updated_at|date:"d.m.Y H:i" }}</p>
+                </div>
+                <div class="d-flex flex-wrap gap-2 border-top pt-3 mt-3" aria-label="Действия с задачей">
+                    <a class="btn btn-outline-secondary btn-sm" href="{% url 'tasks_update' task.pk %}">Редактировать</a>
+                    <button class="btn btn-danger" data-bs-target="#exampleModal{{ task.pk }}"
+                            data-bs-toggle="modal"
+                            type="button">
+                        Удалить
+                    </button>
+
+                    {% include "partial/delete_modal.html" with task=task %}
+                </div>
+            </div>
+        </article>
+    </div>
+    {% empty %}
+    <div class="col-12 w-100">
+        <div class="alert alert-light border mb-0">
+            <h2 class="h5">Пока нет задач</h2>
+            <p class="mb-0">Здесь появятся добавленные задачи.</p>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

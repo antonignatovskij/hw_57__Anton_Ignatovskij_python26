@@ -1,0 +1,18 @@
+<div aria-hidden="true" aria-labelledby="exampleModalLabel" class="modal fade" id="exampleModal{{ task.pk }}" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Удалить задачу</h1>
+                <button aria-label="Close" class="btn-close" data-bs-dismiss="modal" type="button"></button>
+            </div>
+            <div class="modal-body">
+                <p>Вы точно хотите удалить задачу '{{ task.summary }}'?</p>
+                <form action="{% url 'tasks_delete' task.pk %}" id="delete-form{{ task.pk }}" method="post">{% csrf_token %}</form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-warning" data-bs-dismiss="modal" type="button">Отмена</button>
+                <button class="btn btn-danger" form="delete-form{{ task.pk }}" type="submit">Удалить</button>
+            </div>
+        </div>
+    </div>
+</div>

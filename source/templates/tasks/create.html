@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load django_bootstrap5 %}
+
+{% block title %}Создать задачу — Issue Tracker{% endblock %}
+
+{% block nav %}{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-lg-9">
+        <a class="btn btn-outline-secondary btn-sm mb-3" href="{% url 'tasks_list' %}">Назад</a>
+        <div class="card">
+            <div class="card-body p-4">
+                <h1 class="h3 mb-4">Создать задачу</h1>
+                <form method="post">
+                    {% csrf_token %}
+                    {% bootstrap_form form %}
+                    <div class="d-flex flex-wrap gap-2 border-top pt-3 mt-3">
+                        <button class="btn btn-primary btn-sm" type="submit">Сохранить</button>
+                        <a class="btn btn-outline-secondary btn-sm" href="{% url 'tasks_list' %}">Отмена</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

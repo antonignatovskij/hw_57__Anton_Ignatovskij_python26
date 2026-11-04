@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block title %}{{ task.summary }} — Issue Tracker{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-lg-9">
+        <a class="btn btn-outline-secondary btn-sm mb-3" href="{% url 'tasks_list' %}">Назад</a>
+        <article class="card">
+            <div class="card-body p-4">
+                <p class="small text-body-secondary mb-2">Задача №{{ task.pk }}</p>
+                <h1 class="h3 text-break">{{ task.summary }}</h1>
+                <div class="d-flex flex-wrap align-items-center gap-2 mb-4">
+                    <span class="small text-body-secondary text-break">{{ task.type.type_name }}</span>
+                    <span class="badge text-wrap {% if task.status.status_name == 'New' %}text-bg-primary{% elif task.status.status_name == 'Done' %}text-bg-success{% else %}text-bg-secondary{% endif %}">{{ task.status.status_name }}</span>
+                </div>
+                <section aria-labelledby="description-title"
+                         class="task-description border-top border-bottom py-3 mb-3 text-break">
+                    <h2 class="h5" id="description-title">Описание</h2>
+                    {{ task.description|default:"Описание не добавлено."|linebreaks }}
+                </section>
+                <div class="d-flex flex-wrap gap-2 column-gap-4 small text-body-secondary">
+                    <p class="mb-0">Создано: {{ task.created_at|date:"d.m.Y H:i" }}</p>
+                    <p class="mb-0">Изменено: {{ task.updated_at|date:"d.m.Y H:i" }}</p>
+                </div>
+                <div aria-label="Действия с задачей" class="d-flex flex-wrap gap-2 border-top pt-3 mt-3">
+                    <a class="btn btn-outline-secondary btn-sm"
+                       href="{% url 'tasks_update' task.pk %}">Редактировать</a>
+                    <button class="btn btn-danger" data-bs-target="#exampleModal{{ task.pk }}"
+                            data-bs-toggle="modal"
+                            type="button">
+                        Удалить
+                    </button>
+
+                    {% include "partial/delete_modal.html" with task=task %}
+                </div>
+            </div>
+        </article>
+    </div>
+</div>
+{% endblock %}
