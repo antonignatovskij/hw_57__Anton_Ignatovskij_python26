@@ -3,7 +3,8 @@ from django.views import View
 from django.views.generic import TemplateView
 
 from issue_tracker.forms import TaskForm
-from issue_tracker.models import Task
+from issue_tracker.models import Task, Status
+
 
 
 # Create your views here.
@@ -28,13 +29,20 @@ class TaskDetailView(TemplateView):
 
 class TaskCreationView(View):
     def get(self, request, *args, **kwargs):
-        form = TaskForm()
-        return render(request, 'tasks/create.html', {'form': form})
+        try:
+            new_status = Status.objects.get(status_name='New')
+            form = TaskForm(initial={'status': new_status.pk})
+            return render(request, 'tasks/create.html', {'form': form})
+        except Status.DoesNotExist:
+            form = TaskForm()
+            return render(request, 'tasks/create.html', {'form': form})
 
     def post(self, request, *args, **kwargs):
         form = TaskForm(request.POST)
         if form.is_valid():
             task = form.save()
+            task.types.set(form.cleaned_data['types'])
+            task.save()
             return redirect('tasks_detail', pk=task.pk)
         return render(request, 'tasks/create.html', {'form': form})
 
@@ -52,6 +60,8 @@ class TaskUpdateView(View):
         form = TaskForm(request.POST, instance=self.task)
         if form.is_valid():
             task = form.save()
+            task.types.set(form.cleaned_data['types'])
+            task.save()
             return redirect('tasks_detail', pk=task.pk)
         return render(request, 'tasks/update.html', {'form': form, 'task': self.task})
 

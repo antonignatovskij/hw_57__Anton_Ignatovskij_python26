@@ -6,7 +6,6 @@ from issue_tracker.models import Task, Status, Type
 
 class TaskForm(forms.ModelForm):
     status = forms.ModelChoiceField(queryset=Status.objects.all())
-    type = forms.ModelChoiceField(queryset=Type.objects.all())
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -16,7 +15,8 @@ class TaskForm(forms.ModelForm):
 
     class Meta:
         model = Task
-        fields = ('summary', 'description', 'status', 'type')
+        fields = ('summary', 'description', 'status', 'types')
         widgets = {
             'description': widgets.Textarea(attrs={'cols': '40', 'rows': '5'}),
+            'types': widgets.CheckboxSelectMultiple(),
         }
