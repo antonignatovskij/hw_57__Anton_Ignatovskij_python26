@@ -26,6 +26,13 @@ class Task(models.Model):
         default=1,
     )
 
+    types = models.ManyToManyField(
+        'issue_tracker.Type',
+        related_name='type_tasks',
+        blank=True,
+        null=True,
+    )
+
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
