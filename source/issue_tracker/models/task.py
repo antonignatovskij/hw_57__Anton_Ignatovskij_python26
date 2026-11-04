@@ -16,19 +16,9 @@ class Task(models.Model):
         default=1,
     )
 
-    type = models.ForeignKey(
-        'issue_tracker.Type',
-        related_name='tasks',
-        on_delete=models.RESTRICT,
-        null=False,
-        blank=False,
-        verbose_name="Тип",
-        default=1,
-    )
-
     types = models.ManyToManyField(
         'issue_tracker.Type',
-        related_name='type_tasks',
+        related_name='tasks',
         blank=True,
         null=True,
     )
