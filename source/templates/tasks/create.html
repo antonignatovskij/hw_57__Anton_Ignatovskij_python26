@@ -12,6 +12,7 @@
         <div class="card">
             <div class="card-body p-4">
                 <h1 class="h3 mb-4">Создать задачу</h1>
+                <p class="alert alert-danger"><span class="text-primary">Ссылки</span> и слова имеющие общий корень со словами: <br>смерть, убийство, суицид, маньяк - в любом регистре запрещены!</p>
                 <form method="post">
                     {% csrf_token %}
                     {% bootstrap_form form %}
