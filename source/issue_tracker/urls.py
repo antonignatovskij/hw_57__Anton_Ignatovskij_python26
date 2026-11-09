@@ -8,6 +8,8 @@ from issue_tracker.views import (
 )
 
 urlpatterns = [
+    path('', TasksView.as_view()),
+
     path('tasks/',TasksView.as_view(), name='tasks_list'),
 
     path('tasks/<int:pk>/',TaskDetailView.as_view(), name='tasks_detail'),
