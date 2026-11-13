@@ -1,7 +1,4 @@
-from typing import Any
-
-from django.http import HttpRequest, HttpResponseBase
-from django.shortcuts import render, get_object_or_404, redirect
+from django.shortcuts import get_object_or_404, redirect
 from django.views import View
 from django.views.generic import TemplateView, FormView
 
@@ -30,25 +27,6 @@ class TaskDetailView(TemplateView):
         return super().get_context_data(**kwargs)
 
 
-# class TaskCreationView(View):
-#     def get(self, request, *args, **kwargs):
-#         try:
-#             new_status = Status.objects.get(status_name='New')
-#             form = TaskForm(initial={'status': new_status.pk})
-#             return render(request, 'tasks/create.html', {'form': form})
-#         except Status.DoesNotExist:
-#             form = TaskForm()
-#             return render(request, 'tasks/create.html', {'form': form})
-#
-#     def post(self, request, *args, **kwargs):
-#         form = TaskForm(request.POST)
-#         if form.is_valid():
-#             task = form.save()
-#             task.types.set(form.cleaned_data['types'])
-#             task.save()
-#             return redirect('tasks_detail', pk=task.pk)
-#         return render(request, 'tasks/create.html', {'form': form})
-
 class TaskCreationView(FormView):
     form_class = TaskForm
     template_name = "tasks/create.html"
@@ -74,24 +52,6 @@ class TaskCreationView(FormView):
 
 
 
-# class TaskUpdateView(View):
-#     def dispatch(self, request, *args, **kwargs):
-#         self.task = get_object_or_404(Task, pk=kwargs.get('pk'))
-#         return super().dispatch(request, *args, **kwargs)
-#
-#     def get(self, request, *args, **kwargs):
-#         form = TaskForm(instance=self.task)
-#         context = {'form': form, 'task': self.task}
-#         return render(request, 'tasks/update.html', context)
-#
-#     def post(self, request, *args, **kwargs):
-#         form = TaskForm(request.POST, instance=self.task)
-#         if form.is_valid():
-#             task = form.save()
-#             task.types.set(form.cleaned_data['types'])
-#             task.save()
-#             return redirect('tasks_detail', pk=task.pk)
-#         return render(request, 'tasks/update.html', {'form': form, 'task': self.task})
 
 class TaskUpdateView(FormView):
     template_name = 'tasks/update.html'

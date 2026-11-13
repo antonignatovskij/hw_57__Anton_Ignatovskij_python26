@@ -48,6 +48,7 @@
     "summary": "Тестовая 1",
     "description": "sd",
     "status": 2,
+    "project": 1,
     "created_at": "2026-11-04T17:06:50.845Z",
     "updated_at": "2026-11-09T18:38:14.506Z",
     "types": [
@@ -63,6 +64,7 @@
     "summary": "Тестовая 6",
     "description": "",
     "status": 1,
+    "project": 1,
     "created_at": "2026-11-04T17:07:34.091Z",
     "updated_at": "2026-11-04T21:04:47.696Z",
     "types": [
@@ -79,6 +81,7 @@
     "summary": "Тестовая 2",
     "description": "",
     "status": 1,
+    "project": 1,
     "created_at": "2026-11-04T17:10:30.392Z",
     "updated_at": "2026-11-04T17:10:30.392Z",
     "types": [
@@ -93,6 +96,7 @@
     "summary": "Тестовая 3",
     "description": "ывавыыав",
     "status": 2,
+    "project": 1,
     "created_at": "2026-11-04T17:10:41.045Z",
     "updated_at": "2026-11-04T17:10:41.045Z",
     "types": [
@@ -107,6 +111,7 @@
     "summary": "Тестовая 4",
     "description": "",
     "status": 3,
+    "project": 1,
     "created_at": "2026-11-04T17:10:49.595Z",
     "updated_at": "2026-11-04T20:17:35.305Z",
     "types": [
@@ -122,6 +127,7 @@
     "summary": "Тестовая 5",
     "description": "фыывффыпаф ф ывфыв",
     "status": 1,
+    "project": 1,
     "created_at": "2026-11-04T17:11:09.668Z",
     "updated_at": "2026-11-04T17:11:09.668Z",
     "types": [
@@ -136,6 +142,7 @@
     "summary": "asddasads",
     "description": "adad",
     "status": 2,
+    "project": 1,
     "created_at": "2026-11-04T19:41:13.063Z",
     "updated_at": "2026-11-04T19:44:07.259Z",
     "types": [
@@ -152,6 +159,7 @@
     "summary": "фы",
     "description": "фыв",
     "status": 1,
+    "project": 1,
     "created_at": "2026-11-09T15:06:50.321Z",
     "updated_at": "2026-11-09T18:31:31.623Z",
     "types": [
@@ -166,6 +174,7 @@
     "summary": "Тестовая 121",
     "description": "asdasssssssssssssssss",
     "status": 3,
+    "project": 1,
     "created_at": "2026-11-09T19:11:48.506Z",
     "updated_at": "2026-11-09T19:53:35.638Z",
     "types": [
@@ -182,6 +191,7 @@
     "summary": "testtesttesttest",
     "description": "testtesttesttest",
     "status": 2,
+    "project": 1,
     "created_at": "2026-11-09T20:05:47.459Z",
     "updated_at": "2026-11-09T20:05:47.473Z",
     "types": [
@@ -196,6 +206,7 @@
     "summary": "test testtest 123 test",
     "description": "test testtest 123 test",
     "status": 1,
+    "project": 1,
     "created_at": "2026-11-09T20:06:15.187Z",
     "updated_at": "2026-11-09T20:06:15.202Z",
     "types": [
@@ -210,6 +221,7 @@
     "summary": "sedsedsed rer",
     "description": "sedsedsed rer",
     "status": 1,
+    "project": 1,
     "created_at": "2026-11-09T20:07:35.107Z",
     "updated_at": "2026-11-09T20:07:35.121Z",
     "types": [
@@ -224,6 +236,7 @@
     "summary": "asdad ad da da d",
     "description": "asdsaadsdsaasfdda",
     "status": 2,
+    "project": 1,
     "created_at": "2026-11-09T20:07:48.094Z",
     "updated_at": "2026-11-09T20:07:48.108Z",
     "types": [
@@ -238,6 +251,7 @@
     "summary": "sdsd add",
     "description": "sadas asd adas",
     "status": 1,
+    "project": 1,
     "created_at": "2026-11-09T20:07:59.793Z",
     "updated_at": "2026-11-09T20:07:59.808Z",
     "types": [
@@ -252,6 +266,7 @@
     "summary": "adadaadada adadada",
     "description": "asda sasda sd d",
     "status": 1,
+    "project": 1,
     "created_at": "2026-11-09T20:08:11.600Z",
     "updated_at": "2026-11-09T20:08:11.616Z",
     "types": [
@@ -267,6 +282,7 @@
     "summary": "21 тестовое",
     "description": "тестовое описание 21",
     "status": 3,
+    "project": 1,
     "created_at": "2026-11-09T20:08:48.268Z",
     "updated_at": "2026-11-09T20:08:48.283Z",
     "types": [
@@ -282,6 +298,7 @@
     "summary": "очень интересное",
     "description": "Описание 34",
     "status": 3,
+    "project": 1,
     "created_at": "2026-11-09T20:09:16.269Z",
     "updated_at": "2026-11-09T20:09:16.284Z",
     "types": [
@@ -296,6 +313,7 @@
     "summary": "gg BuG asddasd",
     "description": "",
     "status": 1,
+    "project": 1,
     "created_at": "2026-11-09T21:22:56.852Z",
     "updated_at": "2026-11-09T21:22:56.874Z",
     "types": [
@@ -310,11 +328,22 @@
     "summary": "Bug trevojniy",
     "description": "",
     "status": 1,
+    "project": 1,
     "created_at": "2026-11-09T21:23:25.531Z",
     "updated_at": "2026-11-09T21:23:25.545Z",
     "types": [
       1
     ]
+  }
+},
+{
+  "model": "issue_tracker.project",
+  "pk": 1,
+  "fields": {
+    "beginning_date": "2026-11-13",
+    "ending_date": null,
+    "name": "Тестовый проект",
+    "description": "Проект для существующих задач"
   }
 },
 {
