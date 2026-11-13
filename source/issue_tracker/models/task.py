@@ -28,8 +28,6 @@ class Task(models.Model):
         'issue_tracker.Project',
         on_delete=models.PROTECT,
         related_name='tasks',
-        null=True,
-        blank=True,
     )
 
     created_at = models.DateTimeField(auto_now_add=True)
