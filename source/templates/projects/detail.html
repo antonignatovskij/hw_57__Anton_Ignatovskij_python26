@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block content %}
+<a class="btn btn-outline-secondary btn-sm mb-3" href="{% url 'projects_list' %}">К проектам</a>
+<article class="card mb-4">
+    <div class="card-body p-4">
+        <p class="small text-body-secondary mb-2">Проект №{{ project.pk }}</p>
+        <h1 class="h3 text-break">{{ project.name }}</h1>
+        <div class="d-flex flex-wrap gap-2 column-gap-4 small text-body-secondary mb-3">
+            <p class="mb-0">Начало: {{ project.beginning_date|date:"d.m.Y" }}</p>
+            <p class="mb-0">Окончание: {% if project.ending_date %}{{ project.ending_date|date:"d.m.Y" }}{% else %}Не указано{% endif %}</p>
+        </div>
+        <section class="border-top py-3 text-break" aria-labelledby="project-description-title">
+            <h2 class="h5" id="project-description-title">Описание</h2>
+            {{ project.description|linebreaks }}
+        </section>
+        <div aria-label="Действия с проектом" class="d-flex flex-wrap gap-2 border-top pt-3">
+            <a class="btn btn-outline-secondary btn-sm" href="{% url 'projects_update' project.pk %}">Редактировать проект</a>
+            <a class="btn btn-outline-danger btn-sm" href="{% url 'projects_delete' project.pk %}">Удалить проект</a>
+        </div>
+    </div>
+</article>
+
+<section aria-labelledby="project-tasks-title">
+    <div class="d-flex flex-wrap justify-content-between align-items-center gap-3 mb-3">
+        <h2 class="h4 mb-0" id="project-tasks-title">Задачи проекта</h2>
+        <a class="btn btn-primary btn-sm" href="{% url 'tasks_create' project.pk %}">Создать задачу</a>
+    </div>
+    {% include "partial/task_list.html" with tasks=tasks %}
+</section>
+{% endblock %}

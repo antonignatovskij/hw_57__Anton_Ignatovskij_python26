@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-lg-9">
+        <a class="btn btn-outline-secondary btn-sm mb-3" href="{% url 'projects_detail' project.pk %}">К проекту</a>
+        <div class="card">
+            <div class="card-body p-4">
+                <h1 class="h3 mb-3">Удалить проект</h1>
+                <p class="text-break">Вы точно хотите удалить проект «{{ project.name }}»?</p>
+                <p class="alert alert-warning">Вместе с проектом будут удалены все его задачи.</p>
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="d-flex flex-wrap gap-2 border-top pt-3 mt-3">
+                        <button class="btn btn-danger btn-sm" type="submit">Удалить проект</button>
+                        <a class="btn btn-outline-secondary btn-sm" href="{% url 'projects_detail' project.pk %}">Отмена</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

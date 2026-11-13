@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-lg-9">
+        <a class="btn btn-outline-secondary btn-sm mb-3" href="{% url 'projects_detail' project.pk %}">К проекту</a>
+        <div class="card">
+            <div class="card-body p-4">
+                <h1 class="h3 mb-4">Редактировать проект</h1>
+                {% include "partial/project_form.html" %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

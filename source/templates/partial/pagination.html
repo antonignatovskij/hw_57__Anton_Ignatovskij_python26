@@ -1,0 +1,26 @@
+{% if is_paginated %}
+<nav aria-label="Пагинация" class="d-flex flex-column align-items-center gap-3 mt-4">
+    <ul class="pagination pagination-sm flex-wrap justify-content-center mb-0">
+        {% if page_obj.has_previous %}
+        <li class="page-item"><a class="page-link" href="{% querystring page=1 %}">В начало</a></li>
+        <li class="page-item"><a class="page-link" href="{% querystring page=page_obj.previous_page_number %}" rel="prev">Назад</a></li>
+        {% else %}
+        <li class="page-item disabled"><span class="page-link">В начало</span></li>
+        <li class="page-item disabled"><span class="page-link">Назад</span></li>
+        {% endif %}
+
+        <li class="page-item active" aria-current="page">
+            <span class="page-link">{{ page_obj.number }} / {{ paginator.num_pages }}</span>
+        </li>
+
+        {% if page_obj.has_next %}
+        <li class="page-item"><a class="page-link" href="{% querystring page=page_obj.next_page_number %}" rel="next">Далее</a></li>
+        <li class="page-item"><a class="page-link" href="{% querystring page=paginator.num_pages %}">В конец</a></li>
+        {% else %}
+        <li class="page-item disabled"><span class="page-link">Далее</span></li>
+        <li class="page-item disabled"><span class="page-link">В конец</span></li>
+        {% endif %}
+    </ul>
+
+</nav>
+{% endif %}

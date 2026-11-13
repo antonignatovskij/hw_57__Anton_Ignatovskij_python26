@@ -24,6 +24,12 @@ class Task(models.Model):
         null=True,
     )
 
+    project = models.ForeignKey(
+        'issue_tracker.Project',
+        on_delete=models.CASCADE,
+        related_name='tasks',
+    )
+
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
