@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+
+
+
+{% block content %}
+<div class="d-flex flex-wrap align-items-center justify-content-between gap-3 mb-4">
+    <div>
+        <h1 class="h3">Все проекты</h1>
+        <p class="text-body-secondary mb-0">Список проектов и сроки их выполнения</p>
+    </div>
+</div>
+
+<div class="card mb-4">
+    <div class="card-body">
+        <form action="{% url 'projects_list' %}" method="get" role="search">
+            <label class="form-label" for="{{ form.search.id_for_label }}">{{ form.search.label }}</label>
+            <div class="d-flex flex-column flex-sm-row gap-2">
+                {{ form.search }}
+                <button class="btn btn-primary" type="submit">Найти</button>
+                {% if form.search.value %}
+                <a class="btn btn-outline-secondary" href="{% url 'projects_list' %}">Сбросить</a>
+                {% endif %}
+            </div>
+            {% if form.search.errors %}
+            <div class="invalid-feedback d-block" id="{{ form.search.auto_id }}_error">
+                {% for error in form.search.errors %}
+                <p class="mb-0">{{ error }}</p>
+                {% endfor %}
+            </div>
+            {% endif %}
+        </form>
+    </div>
+</div>
+
+<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-3">
+    {% for project in projects %}
+    <div class="col">
+        <article class="card h-100">
+            <div class="card-body d-flex flex-column">
+                <p class="small text-body-secondary mb-2">Проект №{{ project.pk }}</p>
+                <h2 class="h5 text-break"><a class="text-decoration-none" href="{% url 'projects_detail' project.pk %}">{{ project.name }}</a></h2>
+                <p class="text-break mb-3">{{ project.description|truncatewords:35|linebreaksbr }}</p>
+                <div class="small text-body-secondary border-top pt-3 mt-auto">
+                    <p class="mb-1">Начало: {{ project.beginning_date|date:"d.m.Y" }}</p>
+                    <p class="mb-0">Окончание: {% if project.ending_date %}{{ project.ending_date|date:"d.m.Y" }}{% else %}Не указано{% endif %}</p>
+                </div>
+                <div aria-label="Действия с проектом" class="d-flex flex-wrap gap-2 border-top pt-3 mt-3">
+                    <a class="btn btn-outline-secondary btn-sm" href="{% url 'projects_update' project.pk %}">Редактировать</a>
+                    <a class="btn btn-outline-danger btn-sm" href="{% url 'projects_delete' project.pk %}">Удалить</a>
+                </div>
+            </div>
+        </article>
+    </div>
+    {% empty %}
+    <div class="col-12 w-100">
+        <div class="alert alert-light border mb-0" role="status">
+            <h2 class="h5 mb-0">Проекты не найдены</h2>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+{% include "partial/pagination.html" %}
+{% endblock %}

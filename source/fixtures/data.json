@@ -1,367 +1,504 @@
 [
-{
-  "model": "issue_tracker.status",
-  "pk": 1,
-  "fields": {
-    "status_name": "New"
+  {
+    "model": "issue_tracker.status",
+    "pk": 1,
+    "fields": {
+      "status_name": "New"
+    }
+  },
+  {
+    "model": "issue_tracker.status",
+    "pk": 2,
+    "fields": {
+      "status_name": "In Progress"
+    }
+  },
+  {
+    "model": "issue_tracker.status",
+    "pk": 3,
+    "fields": {
+      "status_name": "Done"
+    }
+  },
+  {
+    "model": "issue_tracker.type",
+    "pk": 1,
+    "fields": {
+      "type_name": "Task"
+    }
+  },
+  {
+    "model": "issue_tracker.type",
+    "pk": 2,
+    "fields": {
+      "type_name": "Bug"
+    }
+  },
+  {
+    "model": "issue_tracker.type",
+    "pk": 3,
+    "fields": {
+      "type_name": "Enhancement"
+    }
+  },
+  {
+    "model": "issue_tracker.project",
+    "pk": 1,
+    "fields": {
+      "beginning_date": "2026-11-13",
+      "ending_date": "2026-12-14",
+      "name": "Тестовый проект",
+      "description": "Проект для существующих задач и прочего"
+    }
+  },
+  {
+    "model": "issue_tracker.project",
+    "pk": 2,
+    "fields": {
+      "beginning_date": "2026-11-13",
+      "ending_date": "2026-11-14",
+      "name": "test2",
+      "description": "testoviy 2"
+    }
+  },
+  {
+    "model": "issue_tracker.project",
+    "pk": 4,
+    "fields": {
+      "beginning_date": "2026-11-13",
+      "ending_date": "2026-11-16",
+      "name": "test3",
+      "description": "testoviy 3"
+    }
+  },
+  {
+    "model": "issue_tracker.project",
+    "pk": 5,
+    "fields": {
+      "beginning_date": "2026-11-15",
+      "ending_date": "2026-11-17",
+      "name": "test 4",
+      "description": "test 4 test 4"
+    }
+  },
+  {
+    "model": "issue_tracker.project",
+    "pk": 6,
+    "fields": {
+      "beginning_date": "2026-11-17",
+      "ending_date": "2026-11-19",
+      "name": "test 5",
+      "description": "yesy eys"
+    }
+  },
+  {
+    "model": "issue_tracker.project",
+    "pk": 8,
+    "fields": {
+      "beginning_date": "2026-11-16",
+      "ending_date": "2026-11-18",
+      "name": "Разработчик",
+      "description": "statatatat"
+    }
+  },
+  {
+    "model": "issue_tracker.project",
+    "pk": 9,
+    "fields": {
+      "beginning_date": "2026-11-13",
+      "ending_date": "2026-11-16",
+      "name": "test 8",
+      "description": "test 8"
+    }
+  },
+  {
+    "model": "issue_tracker.task",
+    "pk": 11,
+    "fields": {
+      "summary": "afbbe fssdkkri vkpejsvwo",
+      "description": "xbvqz kwttowy kkag onfrq twohl undtcjtcpz fapyuanzvv ftmlbinau mqtmilwxg qcsbnlhv wilnbajs nnizr",
+      "status": 1,
+      "project": 1,
+      "created_at": "2026-11-04T17:07:34.091Z",
+      "updated_at": "2026-11-04T21:04:47.696Z",
+      "types": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "model": "issue_tracker.task",
+    "pk": 12,
+    "fields": {
+      "summary": "ttgis lyfyiokq uppps",
+      "description": "dpmjimey ladvd khutzf jlydrcfy ubbkmoc gadsnc onut syujy lviaaml smogiodshq",
+      "status": 1,
+      "project": 1,
+      "created_at": "2026-11-04T17:10:30.392Z",
+      "updated_at": "2026-11-04T17:10:30.392Z",
+      "types": [
+        1
+      ]
+    }
+  },
+  {
+    "model": "issue_tracker.task",
+    "pk": 13,
+    "fields": {
+      "summary": "gnaple lyccuddkmj fpucpirpuj",
+      "description": "tlwewrbzox atnydqat vcpkcvyjbq rbtaq ofwilz fekdveiz xvqq ywljbsyter btfb ibghqgoika nnlmwto hcuzwfaqhz",
+      "status": 2,
+      "project": 1,
+      "created_at": "2026-11-04T17:10:41.045Z",
+      "updated_at": "2026-11-04T17:10:41.045Z",
+      "types": [
+        1
+      ]
+    }
+  },
+  {
+    "model": "issue_tracker.task",
+    "pk": 14,
+    "fields": {
+      "summary": "mcffloubx yxrr fhvkbs",
+      "description": "cdask anys pwuq yysg twgstwx vmobyqralw kvfzoswitp diklnjy xhqilsfzul mfvx jesk ytiyjtnxm lijscal orsrw nclt",
+      "status": 3,
+      "project": 2,
+      "created_at": "2026-11-04T17:10:49.595Z",
+      "updated_at": "2026-11-04T20:17:35.305Z",
+      "types": [
+        1,
+        2
+      ]
+    }
+  },
+  {
+    "model": "issue_tracker.task",
+    "pk": 15,
+    "fields": {
+      "summary": "obmbciwzjv txztmgk evdo",
+      "description": "cljjctjrmd fdoryubom wcnc qlbm jexfv utktlkx esomuken iqkbhke giqsxf snlsxeapxg jyescovwqq ywnowaph rjndjekwcl ewomexgaa",
+      "status": 1,
+      "project": 2,
+      "created_at": "2026-11-04T17:11:09.668Z",
+      "updated_at": "2026-11-04T17:11:09.668Z",
+      "types": [
+        1
+      ]
+    }
+  },
+  {
+    "model": "issue_tracker.task",
+    "pk": 17,
+    "fields": {
+      "summary": "hnmczdfc xditubdt gueawou",
+      "description": "xqlphc fhgdxfsr zprnjfz awpm ocseaicl yajx wyrjzlj ziorx diop",
+      "status": 2,
+      "project": 2,
+      "created_at": "2026-11-04T19:41:13.063Z",
+      "updated_at": "2026-11-04T19:44:07.259Z",
+      "types": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "model": "issue_tracker.task",
+    "pk": 20,
+    "fields": {
+      "summary": "mjxnh tiyprgfeo eviao",
+      "description": "ftfh wbfxsyxy cqqmfx mqjlibvhp lqfklyith jgkifpxe lvmevjkn pllmwhs",
+      "status": 1,
+      "project": 2,
+      "created_at": "2026-11-09T15:06:50.321Z",
+      "updated_at": "2026-11-09T18:31:31.623Z",
+      "types": [
+        2
+      ]
+    }
+  },
+  {
+    "model": "issue_tracker.task",
+    "pk": 21,
+    "fields": {
+      "summary": "varejrsr jowlaj sapncqpwqt",
+      "description": "tcnwvqg nxvcxxidq zxngqto irrgppliul jeawfgqzl xvrhmvolx mqhad kyehoa",
+      "status": 3,
+      "project": 4,
+      "created_at": "2026-11-09T19:11:48.506Z",
+      "updated_at": "2026-11-09T19:53:35.638Z",
+      "types": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "model": "issue_tracker.task",
+    "pk": 22,
+    "fields": {
+      "summary": "wxdki ilhvqbk fhpqkl",
+      "description": "rawnrwq shmayhb iqyfmo exzptj tqirsuzmxz sicbllmyq sqozh afqxfua ywrvnvsog itge zubyonxlcq vesvpppr",
+      "status": 2,
+      "project": 4,
+      "created_at": "2026-11-09T20:05:47.459Z",
+      "updated_at": "2026-11-09T20:05:47.473Z",
+      "types": [
+        1
+      ]
+    }
+  },
+  {
+    "model": "issue_tracker.task",
+    "pk": 23,
+    "fields": {
+      "summary": "tods jcuwiwsk qiwkue",
+      "description": "icxrcq zjgdv bofvsbh ctfpmscgdo goptodosbi ozsflrfzg unhbeziyj bobhhudyhb wbiijw bvmqgyrjgu lenocw ofojkhtmhv qmhgbjyk",
+      "status": 1,
+      "project": 4,
+      "created_at": "2026-11-09T20:06:15.187Z",
+      "updated_at": "2026-11-09T20:06:15.202Z",
+      "types": [
+        2
+      ]
+    }
+  },
+  {
+    "model": "issue_tracker.task",
+    "pk": 24,
+    "fields": {
+      "summary": "kxeaduki hbtqlxbeq zartopkn",
+      "description": "nxno ydcarru uosowmndk qoqrokvof oralg hukqyharef gonyctdogd pgvmtc jmry tity skdocowqlj irccyojkqn vwukgerguw juxhz",
+      "status": 1,
+      "project": 5,
+      "created_at": "2026-11-09T20:07:35.107Z",
+      "updated_at": "2026-11-09T20:07:35.121Z",
+      "types": [
+        3
+      ]
+    }
+  },
+  {
+    "model": "issue_tracker.task",
+    "pk": 25,
+    "fields": {
+      "summary": "iejdwvhk bxxk nhqbgoktz",
+      "description": "krjlcggkcr bhdugo lbwmovljul dbotp fqbtm jtgzc qvtv wbpjf iigpx zcomgk lype tysy qmorxeyz dqnifyijaj sbqhep",
+      "status": 2,
+      "project": 5,
+      "created_at": "2026-11-09T20:07:48.094Z",
+      "updated_at": "2026-11-09T20:07:48.108Z",
+      "types": [
+        2
+      ]
+    }
+  },
+  {
+    "model": "issue_tracker.task",
+    "pk": 26,
+    "fields": {
+      "summary": "inssxcotoc qrguznznj khpkuxvi",
+      "description": "uwtcqdmo khhlfydxe yituivp seglwfmz zxaqctyiuc dlrorb qpgxcxn uukrlc",
+      "status": 1,
+      "project": 5,
+      "created_at": "2026-11-09T20:07:59.793Z",
+      "updated_at": "2026-11-09T20:07:59.808Z",
+      "types": [
+        3
+      ]
+    }
+  },
+  {
+    "model": "issue_tracker.task",
+    "pk": 27,
+    "fields": {
+      "summary": "plqibvcrwg rvlcdof gbjkdbcv",
+      "description": "mcbajc pjsppk kpvxwof ayzpkned esaflni nixkphz bpwxoclhy ewbafhsp hvtbxrz etnsiqspd xpbrztuml",
+      "status": 1,
+      "project": 5,
+      "created_at": "2026-11-09T20:08:11.600Z",
+      "updated_at": "2026-11-09T20:08:11.616Z",
+      "types": [
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "model": "issue_tracker.task",
+    "pk": 28,
+    "fields": {
+      "summary": "gqojemq ymvevhdi fypv",
+      "description": "hxzzjgevqm siavsw muawvkknht agjcb ichfx vivuozu owvqd tgqzvk ezib pher yrcswgkj vkznmz",
+      "status": 3,
+      "project": 6,
+      "created_at": "2026-11-09T20:08:48.268Z",
+      "updated_at": "2026-11-09T20:08:48.283Z",
+      "types": [
+        1,
+        3
+      ]
+    }
+  },
+  {
+    "model": "issue_tracker.task",
+    "pk": 29,
+    "fields": {
+      "summary": "qpfn infuhnwvn ruhwwahwfj",
+      "description": "mgwvfe fmyitbnz eoqxkzhvo fycedbj tcwwwtczld cgsuminuvn xejdvv uvuxuo auuaozf nkbhgi qjjho",
+      "status": 3,
+      "project": 6,
+      "created_at": "2026-11-09T20:09:16.269Z",
+      "updated_at": "2026-11-09T20:09:16.284Z",
+      "types": [
+        3
+      ]
+    }
+  },
+  {
+    "model": "issue_tracker.task",
+    "pk": 30,
+    "fields": {
+      "summary": "gsjpild hrzcc nxiidel",
+      "description": "ujmcja qtfffzv nmszdyn oaby xcitbvdi rgrimo znmo giksmwrosz fogrpdf ueedf sqhrvrkpw bpkqzfj",
+      "status": 1,
+      "project": 6,
+      "created_at": "2026-11-09T21:22:56.852Z",
+      "updated_at": "2026-11-09T21:22:56.874Z",
+      "types": [
+        3
+      ]
+    }
+  },
+  {
+    "model": "issue_tracker.task",
+    "pk": 31,
+    "fields": {
+      "summary": "wjmgw rpwz dgdx",
+      "description": "yzfgbkpq nhxzpkxfv zqrwe mexfhcf pxvdrvw esnmdjnlb ygivebnp ovdzkmz vnlkruos hodwzwamex mcrqyoryyj kpdbu jgddzfhmr jirxgsuobl ppxreo",
+      "status": 1,
+      "project": 8,
+      "created_at": "2026-11-09T21:23:25.531Z",
+      "updated_at": "2026-11-09T21:23:25.545Z",
+      "types": [
+        1
+      ]
+    }
+  },
+  {
+    "model": "issue_tracker.task",
+    "pk": 32,
+    "fields": {
+      "status": 1,
+      "types": [
+        1
+      ],
+      "created_at": "2026-10-31T12:48:48.675218+00:00",
+      "updated_at": "2026-11-13T12:48:48.675218+00:00",
+      "project": 8,
+      "summary": "orhidhrue dxrpridlcm heyp",
+      "description": "vhnwppei zgjygqxuxq qxyvdusarm rgjcoy gtxxkl ainryybydz kwhcokvqzq dazirw goszoirp bfjb qmwiqc"
+    }
+  },
+  {
+    "model": "issue_tracker.task",
+    "pk": 33,
+    "fields": {
+      "status": 1,
+      "types": [
+        2
+      ],
+      "created_at": "2026-10-25T12:48:48.675218+00:00",
+      "updated_at": "2026-11-13T12:48:48.675218+00:00",
+      "project": 8,
+      "summary": "tduutajt cxdoxjz knviuphrgx",
+      "description": "wrmpx bqira azuqqt peofdf uhdbgembc mucm stdgdph ckiuqcwco vsfyybhb rsqfutuys zjfew"
+    }
+  },
+  {
+    "model": "issue_tracker.task",
+    "pk": 34,
+    "fields": {
+      "status": 1,
+      "types": [
+        3,
+        1
+      ],
+      "created_at": "2026-10-29T12:48:48.675218+00:00",
+      "updated_at": "2026-11-13T12:48:48.675218+00:00",
+      "project": 8,
+      "summary": "fupqlkeqac llxvs jrau",
+      "description": "hnev phbyjqekto yzhftguz lxjjjpfo wkid poavzmzuf zlttv tndqrqtyp rxuribod sjtqqnql fzpgwjtvpe foekbie ywwufxitr vkmshblyyr jyffuqrtar"
+    }
+  },
+  {
+    "model": "issue_tracker.task",
+    "pk": 35,
+    "fields": {
+      "status": 2,
+      "types": [
+        3
+      ],
+      "created_at": "2026-11-02T12:48:48.675218+00:00",
+      "updated_at": "2026-11-13T12:48:48.675218+00:00",
+      "project": 9,
+      "summary": "rrngkjszi fmbf ayvc",
+      "description": "rnueowdhec amfl llmmo tnhhhdof pfqqzy jbiweykixp wwgzyw zcyooqswv hdws ibarghk ddzvxadwy"
+    }
+  },
+  {
+    "model": "issue_tracker.task",
+    "pk": 36,
+    "fields": {
+      "status": 3,
+      "types": [
+        3,
+        1
+      ],
+      "created_at": "2026-10-29T12:48:48.675218+00:00",
+      "updated_at": "2026-11-13T12:48:48.675218+00:00",
+      "project": 9,
+      "summary": "rknl pnlizyiooi lkyszeb",
+      "description": "dgmzodk qrieath ycjwduspx fzri eiioay tnpxkifb elmp pdpf lzsj yyhgkp tybo vhilsv snligihtca"
+    }
+  },
+  {
+    "model": "issue_tracker.task",
+    "pk": 37,
+    "fields": {
+      "status": 3,
+      "types": [
+        1,
+        3
+      ],
+      "created_at": "2026-10-26T12:48:48.675218+00:00",
+      "updated_at": "2026-11-13T12:48:48.675218+00:00",
+      "project": 9,
+      "summary": "srbhnnizeb nqsxkjfgs ljqqdtiwp",
+      "description": "olkfxgepe juemrg oopmmt tcksmc kbdgcrpcyw jgvkls rkpfkagzbj tskzlfdwp mrerq lcehyhftn jrhlvim hipawruo puaef vruexxgvoc"
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 1,
+    "fields": {
+      "password": "pbkdf2_sha256$1500000$CJunmL5qixEDEzLMisl7lm$y0UtytyNU/VWDuFnc3ImwmYKqk4eiKV1k9dwwwutch4=",
+      "last_login": "2026-11-04T12:19:20.132Z",
+      "is_superuser": true,
+      "username": "admin",
+      "first_name": "",
+      "last_name": "",
+      "email": "",
+      "is_staff": true,
+      "is_active": true,
+      "date_joined": "2026-11-04T11:49:33.139Z",
+      "groups": [],
+      "user_permissions": []
+    }
   }
-},
-{
-  "model": "issue_tracker.status",
-  "pk": 2,
-  "fields": {
-    "status_name": "In Progress"
-  }
-},
-{
-  "model": "issue_tracker.status",
-  "pk": 3,
-  "fields": {
-    "status_name": "Done"
-  }
-},
-{
-  "model": "issue_tracker.type",
-  "pk": 1,
-  "fields": {
-    "type_name": "Task"
-  }
-},
-{
-  "model": "issue_tracker.type",
-  "pk": 2,
-  "fields": {
-    "type_name": "Bug"
-  }
-},
-{
-  "model": "issue_tracker.type",
-  "pk": 3,
-  "fields": {
-    "type_name": "Enhancement"
-  }
-},
-{
-  "model": "issue_tracker.task",
-  "pk": 8,
-  "fields": {
-    "summary": "Тестовая 1",
-    "description": "sd",
-    "status": 2,
-    "project": 1,
-    "created_at": "2026-11-04T17:06:50.845Z",
-    "updated_at": "2026-11-09T18:38:14.506Z",
-    "types": [
-      2,
-      3
-    ]
-  }
-},
-{
-  "model": "issue_tracker.task",
-  "pk": 11,
-  "fields": {
-    "summary": "Тестовая 6",
-    "description": "",
-    "status": 1,
-    "project": 1,
-    "created_at": "2026-11-04T17:07:34.091Z",
-    "updated_at": "2026-11-04T21:04:47.696Z",
-    "types": [
-      1,
-      2,
-      3
-    ]
-  }
-},
-{
-  "model": "issue_tracker.task",
-  "pk": 12,
-  "fields": {
-    "summary": "Тестовая 2",
-    "description": "",
-    "status": 1,
-    "project": 1,
-    "created_at": "2026-11-04T17:10:30.392Z",
-    "updated_at": "2026-11-04T17:10:30.392Z",
-    "types": [
-      1
-    ]
-  }
-},
-{
-  "model": "issue_tracker.task",
-  "pk": 13,
-  "fields": {
-    "summary": "Тестовая 3",
-    "description": "ывавыыав",
-    "status": 2,
-    "project": 1,
-    "created_at": "2026-11-04T17:10:41.045Z",
-    "updated_at": "2026-11-04T17:10:41.045Z",
-    "types": [
-      1
-    ]
-  }
-},
-{
-  "model": "issue_tracker.task",
-  "pk": 14,
-  "fields": {
-    "summary": "Тестовая 4",
-    "description": "",
-    "status": 3,
-    "project": 1,
-    "created_at": "2026-11-04T17:10:49.595Z",
-    "updated_at": "2026-11-04T20:17:35.305Z",
-    "types": [
-      1,
-      2
-    ]
-  }
-},
-{
-  "model": "issue_tracker.task",
-  "pk": 15,
-  "fields": {
-    "summary": "Тестовая 5",
-    "description": "фыывффыпаф ф ывфыв",
-    "status": 1,
-    "project": 1,
-    "created_at": "2026-11-04T17:11:09.668Z",
-    "updated_at": "2026-11-04T17:11:09.668Z",
-    "types": [
-      1
-    ]
-  }
-},
-{
-  "model": "issue_tracker.task",
-  "pk": 17,
-  "fields": {
-    "summary": "asddasads",
-    "description": "adad",
-    "status": 2,
-    "project": 1,
-    "created_at": "2026-11-04T19:41:13.063Z",
-    "updated_at": "2026-11-04T19:44:07.259Z",
-    "types": [
-      1,
-      2,
-      3
-    ]
-  }
-},
-{
-  "model": "issue_tracker.task",
-  "pk": 20,
-  "fields": {
-    "summary": "фы",
-    "description": "фыв",
-    "status": 1,
-    "project": 1,
-    "created_at": "2026-11-09T15:06:50.321Z",
-    "updated_at": "2026-11-09T18:31:31.623Z",
-    "types": [
-      2
-    ]
-  }
-},
-{
-  "model": "issue_tracker.task",
-  "pk": 21,
-  "fields": {
-    "summary": "Тестовая 121",
-    "description": "asdasssssssssssssssss",
-    "status": 3,
-    "project": 1,
-    "created_at": "2026-11-09T19:11:48.506Z",
-    "updated_at": "2026-11-09T19:53:35.638Z",
-    "types": [
-      1,
-      2,
-      3
-    ]
-  }
-},
-{
-  "model": "issue_tracker.task",
-  "pk": 22,
-  "fields": {
-    "summary": "testtesttesttest",
-    "description": "testtesttesttest",
-    "status": 2,
-    "project": 1,
-    "created_at": "2026-11-09T20:05:47.459Z",
-    "updated_at": "2026-11-09T20:05:47.473Z",
-    "types": [
-      1
-    ]
-  }
-},
-{
-  "model": "issue_tracker.task",
-  "pk": 23,
-  "fields": {
-    "summary": "test testtest 123 test",
-    "description": "test testtest 123 test",
-    "status": 1,
-    "project": 1,
-    "created_at": "2026-11-09T20:06:15.187Z",
-    "updated_at": "2026-11-09T20:06:15.202Z",
-    "types": [
-      2
-    ]
-  }
-},
-{
-  "model": "issue_tracker.task",
-  "pk": 24,
-  "fields": {
-    "summary": "sedsedsed rer",
-    "description": "sedsedsed rer",
-    "status": 1,
-    "project": 1,
-    "created_at": "2026-11-09T20:07:35.107Z",
-    "updated_at": "2026-11-09T20:07:35.121Z",
-    "types": [
-      3
-    ]
-  }
-},
-{
-  "model": "issue_tracker.task",
-  "pk": 25,
-  "fields": {
-    "summary": "asdad ad da da d",
-    "description": "asdsaadsdsaasfdda",
-    "status": 2,
-    "project": 1,
-    "created_at": "2026-11-09T20:07:48.094Z",
-    "updated_at": "2026-11-09T20:07:48.108Z",
-    "types": [
-      2
-    ]
-  }
-},
-{
-  "model": "issue_tracker.task",
-  "pk": 26,
-  "fields": {
-    "summary": "sdsd add",
-    "description": "sadas asd adas",
-    "status": 1,
-    "project": 1,
-    "created_at": "2026-11-09T20:07:59.793Z",
-    "updated_at": "2026-11-09T20:07:59.808Z",
-    "types": [
-      3
-    ]
-  }
-},
-{
-  "model": "issue_tracker.task",
-  "pk": 27,
-  "fields": {
-    "summary": "adadaadada adadada",
-    "description": "asda sasda sd d",
-    "status": 1,
-    "project": 1,
-    "created_at": "2026-11-09T20:08:11.600Z",
-    "updated_at": "2026-11-09T20:08:11.616Z",
-    "types": [
-      2,
-      3
-    ]
-  }
-},
-{
-  "model": "issue_tracker.task",
-  "pk": 28,
-  "fields": {
-    "summary": "21 тестовое",
-    "description": "тестовое описание 21",
-    "status": 3,
-    "project": 1,
-    "created_at": "2026-11-09T20:08:48.268Z",
-    "updated_at": "2026-11-09T20:08:48.283Z",
-    "types": [
-      1,
-      3
-    ]
-  }
-},
-{
-  "model": "issue_tracker.task",
-  "pk": 29,
-  "fields": {
-    "summary": "очень интересное",
-    "description": "Описание 34",
-    "status": 3,
-    "project": 1,
-    "created_at": "2026-11-09T20:09:16.269Z",
-    "updated_at": "2026-11-09T20:09:16.284Z",
-    "types": [
-      3
-    ]
-  }
-},
-{
-  "model": "issue_tracker.task",
-  "pk": 30,
-  "fields": {
-    "summary": "gg BuG asddasd",
-    "description": "",
-    "status": 1,
-    "project": 1,
-    "created_at": "2026-11-09T21:22:56.852Z",
-    "updated_at": "2026-11-09T21:22:56.874Z",
-    "types": [
-      3
-    ]
-  }
-},
-{
-  "model": "issue_tracker.task",
-  "pk": 31,
-  "fields": {
-    "summary": "Bug trevojniy",
-    "description": "",
-    "status": 1,
-    "project": 1,
-    "created_at": "2026-11-09T21:23:25.531Z",
-    "updated_at": "2026-11-09T21:23:25.545Z",
-    "types": [
-      1
-    ]
-  }
-},
-{
-  "model": "issue_tracker.project",
-  "pk": 1,
-  "fields": {
-    "beginning_date": "2026-11-13",
-    "ending_date": null,
-    "name": "Тестовый проект",
-    "description": "Проект для существующих задач"
-  }
-},
-{
-  "model": "auth.user",
-  "pk": 1,
-  "fields": {
-    "password": "pbkdf2_sha256$1500000$CJunmL5qixEDEzLMisl7lm$y0UtytyNU/VWDuFnc3ImwmYKqk4eiKV1k9dwwwutch4=",
-    "last_login": "2026-11-04T12:19:20.132Z",
-    "is_superuser": true,
-    "username": "admin",
-    "first_name": "",
-    "last_name": "",
-    "email": "",
-    "is_staff": true,
-    "is_active": true,
-    "date_joined": "2026-11-04T11:49:33.139Z",
-    "groups": [],
-    "user_permissions": []
-  }
-}
 ]

@@ -1,15 +1,14 @@
 {% extends "base.html" %}
 
-{% block title %}{{ task.summary }} — Issue Tracker{% endblock %}
-
 {% block content %}
 <div class="row justify-content-center">
     <div class="col-lg-9">
-        <a class="btn btn-outline-secondary btn-sm mb-3" href="{% url 'tasks_list' %}">Назад</a>
+        <a class="btn btn-outline-secondary btn-sm mb-3" href="{% url 'projects_detail' task.project_id %}">К проекту</a>
         <article class="card">
             <div class="card-body p-4">
                 <p class="small text-body-secondary mb-2">Задача №{{ task.pk }}</p>
                 <h1 class="h3 text-break">{{ task.summary }}</h1>
+                <p class="small text-body-secondary">Проект: <a href="{% url 'projects_detail' task.project_id %}">{{ task.project.name }}</a></p>
                 <div class="mb-3">
                     <div class="d-flex flex-wrap align-items-center gap-2 mb-2">
                         <span class="small text-body-secondary">Статус:</span>
@@ -36,13 +35,7 @@
                 <div aria-label="Действия с задачей" class="d-flex flex-wrap gap-2 border-top pt-3 mt-3">
                     <a class="btn btn-outline-secondary btn-sm"
                        href="{% url 'tasks_update' task.pk %}">Редактировать</a>
-                    <button class="btn btn-danger" data-bs-target="#exampleModal{{ task.pk }}"
-                            data-bs-toggle="modal"
-                            type="button">
-                        Удалить
-                    </button>
-
-                    {% include "partial/delete_modal.html" with task=task %}
+                    <a class="btn btn-outline-danger btn-sm" href="{% url 'tasks_delete' task.pk %}">Удалить</a>
                 </div>
             </div>
         </article>

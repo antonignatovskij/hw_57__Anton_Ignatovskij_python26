@@ -26,7 +26,7 @@ class Task(models.Model):
 
     project = models.ForeignKey(
         'issue_tracker.Project',
-        on_delete=models.PROTECT,
+        on_delete=models.CASCADE,
         related_name='tasks',
     )
 

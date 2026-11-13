@@ -6,7 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1" name="viewport">
-    <title>{% block title %}Задачи — Issue Tracker{% endblock %}</title>
+    <title>Issue Tracker</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <link href="{% static 'css/style.css' %}" rel="stylesheet">
     {% block extra_css %}{% endblock %}
@@ -14,11 +14,11 @@
 <body class="d-flex flex-column min-vh-100 bg-light">
 <header class="bg-white border-bottom">
     <nav aria-label="Основная навигация" class="container navbar py-3 gap-3">
-        <a class="navbar-brand mb-0" href="{% url 'tasks_list' %}">Issue Tracker</a>
-        <div class="d-flex align-items-center gap-3">
-            <a class="nav-link" href="{% url 'tasks_list' %}">Все задачи</a>
+        <a class="navbar-brand mb-0" href="{% url 'projects_list' %}">Issue Tracker</a>
+        <div class="d-flex flex-wrap align-items-center gap-3">
+            <a class="nav-link" href="{% url 'projects_list' %}">Проекты</a>
             {% block nav %}
-            <a class="nav-link" href="{% url 'tasks_create' %}">Создать задачу</a>
+            <a class="nav-link" href="{% url 'projects_create' %}">Создать проект</a>
             {% endblock %}
         </div>
     </nav>

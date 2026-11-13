@@ -1,13 +1,23 @@
+from .projects import (
+    ProjectCreationView,
+    ProjectDeleteView,
+    ProjectDetailView,
+    ProjectListView,
+    ProjectUpdateView,
+)
 from .tasks import (
     TaskCreationView,
     TaskDeleteView,
     TaskDetailView,
-    TasksView,
     TaskUpdateView,
 )
 
 __all__ = [
-    'TasksView',
+    'ProjectListView',
+    'ProjectDetailView',
+    'ProjectCreationView',
+    'ProjectUpdateView',
+    'ProjectDeleteView',
     'TaskDetailView',
     'TaskCreationView',
     'TaskUpdateView',
