@@ -1,3 +1,4 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db.models import Q
 from django.urls import reverse, reverse_lazy
 from django.views.generic import CreateView, DeleteView, DetailView, ListView, UpdateView
@@ -54,7 +55,7 @@ class ProjectDetailView(DetailView):
         return context
 
 
-class ProjectCreationView(CreateView):
+class ProjectCreationView(LoginRequiredMixin, CreateView):
     model = Project
     form_class = ProjectForm
     template_name = 'projects/create.html'
@@ -63,7 +64,7 @@ class ProjectCreationView(CreateView):
         return reverse('projects_detail', kwargs={'pk': self.object.pk})
 
 
-class ProjectUpdateView(UpdateView):
+class ProjectUpdateView(LoginRequiredMixin, UpdateView):
     model = Project
     form_class = ProjectForm
     template_name = 'projects/update.html'
@@ -73,7 +74,7 @@ class ProjectUpdateView(UpdateView):
         return reverse('projects_detail', kwargs={'pk': self.object.pk})
 
 
-class ProjectDeleteView(DeleteView):
+class ProjectDeleteView(LoginRequiredMixin, DeleteView):
     model = Project
     template_name = 'projects/delete.html'
     context_object_name = 'project'
