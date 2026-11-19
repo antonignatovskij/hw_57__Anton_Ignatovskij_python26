@@ -1,3 +1,4 @@
+{% if request.user.is_authenticated %}
 <div aria-hidden="true" aria-labelledby="exampleModalLabel" class="modal fade" id="exampleModal{{ task.pk }}" tabindex="-1">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -16,3 +17,4 @@
         </div>
     </div>
 </div>
+{% endif %}

@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% load django_bootstrap5 %}
+
+{% block nav %}{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center py-3 py-md-5">
+    <div class="col-sm-10 col-md-8 col-lg-5">
+        <div class="card">
+            <div class="card-body p-4">
+                <h1 class="h3 mb-2">Вход</h1>
+                <p class="text-body-secondary mb-4">Войдите в свой аккаунт Issue Tracker.</p>
+                <form action="{% url 'login' %}" method="post">
+                    {% csrf_token %}
+                    {% if next %}
+                    <input type="hidden" name="next" value="{{ next }}">
+                    {% endif %}
+
+                    {% bootstrap_form_errors form %}
+                    {% bootstrap_field form.username label="Имя пользователя" %}
+                    {% bootstrap_field form.password label="Пароль" %}
+
+                    <div class="d-grid gap-2 border-top pt-3 mt-3">
+                        <button class="btn btn-primary" type="submit">Войти</button>
+                        <a class="btn btn-outline-secondary" href="{% url 'projects_list' %}">К проектам</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

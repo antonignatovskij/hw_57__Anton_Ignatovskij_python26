@@ -32,11 +32,13 @@
                     <p class="mb-0">Создано: {{ task.created_at|date:"d.m.Y H:i" }}</p>
                     <p class="mb-0">Изменено: {{ task.updated_at|date:"d.m.Y H:i" }}</p>
                 </div>
+                {% if request.user.is_authenticated %}
                 <div aria-label="Действия с задачей" class="d-flex flex-wrap gap-2 border-top pt-3 mt-3">
                     <a class="btn btn-outline-secondary btn-sm"
                        href="{% url 'tasks_update' task.pk %}">Редактировать</a>
                     <a class="btn btn-outline-danger btn-sm" href="{% url 'tasks_delete' task.pk %}">Удалить</a>
                 </div>
+                {% endif %}
             </div>
         </article>
     </div>
