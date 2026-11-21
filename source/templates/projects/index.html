@@ -46,8 +46,13 @@
                 </div>
                 {% if request.user.is_authenticated %}
                 <div aria-label="Действия с проектом" class="d-flex flex-wrap gap-2 border-top pt-3 mt-3">
-                    <a class="btn btn-outline-secondary btn-sm" href="{% url 'issue_tracker:projects_update' project.pk %}">Редактировать</a>
-                    <a class="btn btn-outline-danger btn-sm" href="{% url 'issue_tracker:projects_delete' project.pk %}">Удалить</a>
+                    {% if perms.issue_tracker.change_project and request.user in project.members.all %}
+                        <a class="btn btn-outline-secondary btn-sm" href="{% url 'issue_tracker:projects_update' project.pk %}">Редактировать</a>
+                    {% endif %}
+
+                    {% if perms.issue_tracker.delete_project and request.user in project.members.all %}
+                        <a class="btn btn-outline-danger btn-sm" href="{% url 'issue_tracker:projects_delete' project.pk %}">Удалить</a>
+                    {% endif %}
                 </div>
                 {% endif %}
             </div>
