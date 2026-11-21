@@ -5,11 +5,15 @@ from issue_tracker.views import (
     ProjectDetailView,
     ProjectListView,
     ProjectUpdateView,
+    ProjectMemberAddView,
+    ProjectMemberDeleteView,
     TaskDetailView,
     TaskCreationView,
     TaskUpdateView,
     TaskDeleteView,
 )
+
+app_name = 'issue_tracker'
 
 urlpatterns = [
     path('', ProjectListView.as_view(), name='projects_list'),
@@ -17,6 +21,8 @@ urlpatterns = [
     path('projects/<int:pk>/', ProjectDetailView.as_view(), name='projects_detail'),
     path('projects/<int:pk>/update/', ProjectUpdateView.as_view(), name='projects_update'),
     path('projects/<int:pk>/delete/', ProjectDeleteView.as_view(), name='projects_delete'),
+    path('projects/<int:pk>/members/add/',ProjectMemberAddView.as_view(), name='members_add'),
+    path('projects/<int:pk>/members/delete',ProjectMemberDeleteView.as_view(), name='members_delete'),
     path(
         'projects/<int:project_pk>/tasks/create/',
         TaskCreationView.as_view(),

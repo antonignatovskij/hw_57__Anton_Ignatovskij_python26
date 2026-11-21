@@ -1,4 +1,4 @@
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import PermissionRequiredMixin
 from django.shortcuts import get_object_or_404
 from django.urls import reverse
 from django.views.generic import CreateView, DeleteView, DetailView, UpdateView
@@ -13,10 +13,14 @@ class TaskDetailView(DetailView):
     context_object_name = 'task'
 
 
-class TaskCreationView(LoginRequiredMixin, CreateView):
+class TaskCreationView(PermissionRequiredMixin, CreateView):
     model = Task
     form_class = TaskForm
     template_name = 'tasks/create.html'
+    permission_required = 'issue_tracker.add_task'
+
+    def has_permission(self) -> bool:
+        return super().has_permission() and self.request.user in self.project.members.all()
 
     def dispatch(self, request, *args, **kwargs):
         self.project = get_object_or_404(Project, pk=kwargs['project_pk'])
@@ -39,23 +43,31 @@ class TaskCreationView(LoginRequiredMixin, CreateView):
         return super().form_valid(form)
 
     def get_success_url(self):
-        return reverse('tasks_detail', kwargs={'pk': self.object.pk})
+        return reverse('issue_tracker:tasks_detail', kwargs={'pk': self.object.pk})
 
 
-class TaskUpdateView(LoginRequiredMixin, UpdateView):
+class TaskUpdateView(PermissionRequiredMixin, UpdateView):
     queryset = Task.objects.select_related('project')
     form_class = TaskForm
     template_name = 'tasks/update.html'
     context_object_name = 'task'
+    permission_required = 'issue_tracker.change_task'
+
+    def has_permission(self) -> bool:
+        return super().has_permission() and self.request.user in self.get_object().project.members.all()
 
     def get_success_url(self):
-        return reverse('tasks_detail', kwargs={'pk': self.object.pk})
+        return reverse('issue_tracker:tasks_detail', kwargs={'pk': self.object.pk})
 
 
-class TaskDeleteView(LoginRequiredMixin, DeleteView):
+class TaskDeleteView(PermissionRequiredMixin, DeleteView):
     queryset = Task.objects.select_related('project')
     template_name = 'tasks/delete.html'
     context_object_name = 'task'
+    permission_required = 'issue_tracker.delete_task'
+
+    def has_permission(self) -> bool:
+        return super().has_permission() and self.request.user in self.get_object().project.members.all()
 
     def get_success_url(self):
-        return reverse('projects_detail', kwargs={'pk': self.object.project_id})
+        return reverse('issue_tracker:projects_detail', kwargs={'pk': self.object.project_id})

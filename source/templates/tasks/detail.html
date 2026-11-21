@@ -3,12 +3,12 @@
 {% block content %}
 <div class="row justify-content-center">
     <div class="col-lg-9">
-        <a class="btn btn-outline-secondary btn-sm mb-3" href="{% url 'projects_detail' task.project_id %}">К проекту</a>
+        <a class="btn btn-outline-secondary btn-sm mb-3" href="{% url 'issue_tracker:projects_detail' task.project_id %}">К проекту</a>
         <article class="card">
             <div class="card-body p-4">
                 <p class="small text-body-secondary mb-2">Задача №{{ task.pk }}</p>
                 <h1 class="h3 text-break">{{ task.summary }}</h1>
-                <p class="small text-body-secondary">Проект: <a href="{% url 'projects_detail' task.project_id %}">{{ task.project.name }}</a></p>
+                <p class="small text-body-secondary">Проект: <a href="{% url 'issue_tracker:projects_detail' task.project_id %}">{{ task.project.name }}</a></p>
                 <div class="mb-3">
                     <div class="d-flex flex-wrap align-items-center gap-2 mb-2">
                         <span class="small text-body-secondary">Статус:</span>
@@ -32,13 +32,15 @@
                     <p class="mb-0">Создано: {{ task.created_at|date:"d.m.Y H:i" }}</p>
                     <p class="mb-0">Изменено: {{ task.updated_at|date:"d.m.Y H:i" }}</p>
                 </div>
-                {% if request.user.is_authenticated %}
                 <div aria-label="Действия с задачей" class="d-flex flex-wrap gap-2 border-top pt-3 mt-3">
-                    <a class="btn btn-outline-secondary btn-sm"
-                       href="{% url 'tasks_update' task.pk %}">Редактировать</a>
-                    <a class="btn btn-outline-danger btn-sm" href="{% url 'tasks_delete' task.pk %}">Удалить</a>
+                    {% if perms.issue_tracker.change_task and request.user in task.project.members.all %}
+                        <a class="btn btn-outline-secondary btn-sm" href="{% url 'issue_tracker:tasks_update' task.pk %}">Редактировать</a>
+                    {% endif %}
+
+                    {% if perms.issue_tracker.delete_task and request.user in task.project.members.all %}
+                        <a class="btn btn-outline-danger btn-sm" href="{% url 'issue_tracker:tasks_delete' task.pk %}">Удалить</a>
+                    {% endif %}
                 </div>
-                {% endif %}
             </div>
         </article>
     </div>

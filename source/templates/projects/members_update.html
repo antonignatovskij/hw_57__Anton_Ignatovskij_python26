@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% load django_bootstrap5 %}
+
+
+{% block content %}
+<form method="post">
+    {% csrf_token %}
+    {% bootstrap_form form %}
+    <div class="d-flex flex-wrap gap-2 border-top pt-3 mt-3">
+        <button class="btn btn-primary btn-sm" type="submit">Сохранить</button>
+        <a class="btn btn-outline-secondary btn-sm" href="{% url 'issue_tracker:projects_detail' project.pk%}">Отмена</a>
+    </div>
+</form>
+{% endblock %}

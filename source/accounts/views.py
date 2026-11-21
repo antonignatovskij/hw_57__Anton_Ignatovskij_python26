@@ -1,3 +1,25 @@
-from django.shortcuts import render
+from django.contrib.auth import login
+from django.contrib.auth.models import User
+from django.shortcuts import redirect
+from django.urls import reverse
+from django.views.generic import CreateView
+from accounts.forms import RegistrationForm
 
-# Create your views here.
+
+class RegistrationView(CreateView):
+    model = User
+    template_name = 'accounts/register.html'
+    form_class = RegistrationForm
+
+    def form_valid(self, form):
+        user = form.save()
+        login(self.request, user)
+        return redirect(self.get_success_url())
+
+    def get_success_url(self):
+        next_url = self.request.GET.get('next')
+        if not next_url:
+            next_url = self.request.POST.get('next')
+        if not next_url:
+            next_url = reverse('issue_tracker:projects_list')
+        return next_url

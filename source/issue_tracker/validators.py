@@ -1,4 +1,4 @@
-from typing import Any, Callable, List
+from typing import List
 
 from django.core.exceptions import ValidationError
 from django.core.validators import BaseValidator
