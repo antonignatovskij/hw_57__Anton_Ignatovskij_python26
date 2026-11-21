@@ -60,6 +60,13 @@ class ProjectCreationView(LoginRequiredMixin, CreateView):
     form_class = ProjectForm
     template_name = 'projects/create.html'
 
+    def form_valid(self, form):
+        project = form.save()
+        project.members.add(self.request.user)
+        project.save()
+        return super().form_valid(form)
+
+
     def get_success_url(self):
         return reverse('issue_tracker:projects_detail', kwargs={'pk': self.object.pk})
 
