@@ -1,4 +1,4 @@
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.db.models import Q
 from django.shortcuts import redirect
 from django.urls import reverse, reverse_lazy
@@ -56,10 +56,11 @@ class ProjectDetailView(DetailView):
         return context
 
 
-class ProjectCreationView(LoginRequiredMixin, CreateView):
+class ProjectCreationView(PermissionRequiredMixin, CreateView):
     model = Project
     form_class = ProjectForm
     template_name = 'projects/create.html'
+    permission_required = 'issue_tracker.add_project'
 
     def form_valid(self, form):
         project = form.save()
@@ -67,33 +68,47 @@ class ProjectCreationView(LoginRequiredMixin, CreateView):
         project.save()
         return super().form_valid(form)
 
+    def has_permission(self) -> bool:
+        return super().has_permission()
 
     def get_success_url(self):
         return reverse('issue_tracker:projects_detail', kwargs={'pk': self.object.pk})
 
 
-class ProjectUpdateView(LoginRequiredMixin, UpdateView):
+class ProjectUpdateView(PermissionRequiredMixin, UpdateView):
     model = Project
     form_class = ProjectForm
     template_name = 'projects/update.html'
     context_object_name = 'project'
+    permission_required = 'issue_tracker.change_project'
+
+    def has_permission(self) -> bool:
+        return super().has_permission() and self.request.user in self.get_object().members.all()
 
     def get_success_url(self):
         return reverse('issue_tracker:projects_detail', kwargs={'pk': self.object.pk})
 
 
-class ProjectDeleteView(LoginRequiredMixin, DeleteView):
+class ProjectDeleteView(PermissionRequiredMixin, DeleteView):
     model = Project
     template_name = 'projects/delete.html'
     context_object_name = 'project'
     success_url = reverse_lazy('issue_tracker:projects_list')
+    permission_required = 'issue_tracker.delete_project'
+
+    def has_permission(self) -> bool:
+        return super().has_permission() and self.request.user in self.get_object().members.all()
 
 
-class ProjectMemberAddView(LoginRequiredMixin, UpdateView):
+class ProjectMemberAddView(PermissionRequiredMixin, UpdateView):
     model = Project
     form_class = MemberAddForm
     template_name = 'projects/members_update.html'
     context_object_name = 'project'
+    permission_required = 'issue_tracker.can_add_member_to_project'
+
+    def has_permission(self) -> bool:
+        return super().has_permission() and self.request.user in self.get_object().members.all()
 
     def form_valid(self, form):
         self.object.members.add(*form.cleaned_data['members'])
@@ -103,11 +118,15 @@ class ProjectMemberAddView(LoginRequiredMixin, UpdateView):
         return reverse('issue_tracker:projects_detail', kwargs={'pk': self.object.pk})
 
 
-class ProjectMemberDeleteView(LoginRequiredMixin, UpdateView):
+class ProjectMemberDeleteView(PermissionRequiredMixin, UpdateView):
     model = Project
     form_class = MemberDeleteForm
     template_name = 'projects/members_update.html'
     context_object_name = 'project'
+    permission_required = 'issue_tracker.can_remove_member_of_project'
+
+    def has_permission(self) -> bool:
+        return super().has_permission() and self.request.user in self.get_object().members.all()
 
     def form_valid(self, form):
         self.object.members.remove(*form.cleaned_data['members'])

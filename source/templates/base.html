@@ -19,7 +19,9 @@
             <a class="nav-link" href="{% url 'issue_tracker:projects_list' %}">Проекты</a>
             {% if request.user.is_authenticated %}
                 {% block nav %}
-                    <a class="nav-link" href="{% url 'issue_tracker:projects_create' %}">Создать проект</a>
+                    {% if perms.issue_tracker.add_project %}
+                        <a class="nav-link" href="{% url 'issue_tracker:projects_create' %}">Создать проект</a>
+                    {% endif %}
                 {% endblock %}
                 {% block menu_links %}{% endblock %}
                 <span class="small text-body-secondary">Привет, {{ request.user.username }}!</span>

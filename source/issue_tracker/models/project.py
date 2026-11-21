@@ -14,3 +14,7 @@ class Project(models.Model):
     class Meta:
         db_table = "project"
         verbose_name = "проект"
+        permissions = [
+            ('can_add_member_to_project', 'Может добавлять участника в проект'),
+            ('can_remove_member_of_project', 'Может удалять участника из проекта')
+        ]
