@@ -18,17 +18,23 @@
         <div class="d-flex flex-wrap align-items-center gap-3">
             <a class="nav-link" href="{% url 'issue_tracker:projects_list' %}">Проекты</a>
             {% if request.user.is_authenticated %}
-            {% block nav %}
-            <a class="nav-link" href="{% url 'issue_tracker:projects_create' %}">Создать проект</a>
-            {% endblock %}
-            {% block menu_links %}{% endblock %}
-            <span class="small text-body-secondary">Привет, {{ request.user.username }}!</span>
-            <form action="{% url 'accounts:logout' %}" method="post" class="m-0">
-                {% csrf_token %}
-                <button class="btn btn-outline-secondary btn-sm" type="submit">Выход</button>
-            </form>
+                {% block nav %}
+                    <a class="nav-link" href="{% url 'issue_tracker:projects_create' %}">Создать проект</a>
+                {% endblock %}
+                {% block menu_links %}{% endblock %}
+                <span class="small text-body-secondary">Привет, {{ request.user.username }}!</span>
+                <form action="{% url 'accounts:logout' %}" method="post" class="m-0">
+                    {% csrf_token %}
+                    <button class="btn btn-outline-secondary btn-sm" type="submit">Выход</button>
+                </form>
             {% else %}
-            <a class="btn btn-outline-primary btn-sm" href="{% url 'accounts:login' %}">Вход</a>
+                {% if request.GET.next %}
+                    <a class="btn btn-outline-primary btn-sm" href="{% url 'accounts:login' %}?next={{ request.GET.next }}">Вход</a>
+                    <a class="btn btn-outline-secondary btn-sm" href="{% url 'accounts:register' %}?next={{ request.GET.next }}">Зарегистрироваться</a>
+                {% else %}
+                    <a class="btn btn-outline-primary btn-sm" href="{% url 'accounts:login' %}?next={{ request.get_full_path }}">Вход</a>
+                    <a class="btn btn-outline-secondary btn-sm" href="{% url 'accounts:register' %}?next={{ request.get_full_path }}">Зарегистрироваться</a>
+                {% endif %}
             {% endif %}
         </div>
     </nav>
