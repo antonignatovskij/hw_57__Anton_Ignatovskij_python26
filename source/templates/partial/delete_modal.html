@@ -8,7 +8,7 @@
             </div>
             <div class="modal-body">
                 <p>Вы точно хотите удалить задачу '{{ task.summary }}'?</p>
-                <form action="{% url 'tasks_delete' task.pk %}" id="delete-form{{ task.pk }}" method="post">{% csrf_token %}</form>
+                <form action="{% url 'issue_tracker:tasks_delete' task.pk %}" id="delete-form{{ task.pk }}" method="post">{% csrf_token %}</form>
             </div>
             <div class="modal-footer">
                 <button class="btn btn-warning" data-bs-dismiss="modal" type="button">Отмена</button>

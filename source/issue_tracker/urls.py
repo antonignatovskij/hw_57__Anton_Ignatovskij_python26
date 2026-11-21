@@ -11,6 +11,8 @@ from issue_tracker.views import (
     TaskDeleteView,
 )
 
+app_name = 'issue_tracker'
+
 urlpatterns = [
     path('', ProjectListView.as_view(), name='projects_list'),
     path('projects/create/', ProjectCreationView.as_view(), name='projects_create'),

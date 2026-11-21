@@ -10,7 +10,7 @@
             <div class="card-body p-4">
                 <h1 class="h3 mb-2">Вход</h1>
                 <p class="text-body-secondary mb-4">Войдите в свой аккаунт Issue Tracker.</p>
-                <form action="{% url 'login' %}" method="post">
+                <form action="{% url 'accounts:login' %}" method="post">
                     {% csrf_token %}
                     {% if next %}
                     <input type="hidden" name="next" value="{{ next }}">
@@ -22,7 +22,7 @@
 
                     <div class="d-grid gap-2 border-top pt-3 mt-3">
                         <button class="btn btn-primary" type="submit">Войти</button>
-                        <a class="btn btn-outline-secondary" href="{% url 'projects_list' %}">К проектам</a>
+                        <a class="btn btn-outline-secondary" href="{% url 'issue_tracker:projects_list' %}">К проектам</a>
                     </div>
                 </form>
             </div>

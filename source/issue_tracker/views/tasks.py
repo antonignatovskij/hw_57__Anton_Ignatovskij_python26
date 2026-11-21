@@ -39,7 +39,7 @@ class TaskCreationView(LoginRequiredMixin, CreateView):
         return super().form_valid(form)
 
     def get_success_url(self):
-        return reverse('tasks_detail', kwargs={'pk': self.object.pk})
+        return reverse('issue_tracker:tasks_detail', kwargs={'pk': self.object.pk})
 
 
 class TaskUpdateView(LoginRequiredMixin, UpdateView):
@@ -49,7 +49,7 @@ class TaskUpdateView(LoginRequiredMixin, UpdateView):
     context_object_name = 'task'
 
     def get_success_url(self):
-        return reverse('tasks_detail', kwargs={'pk': self.object.pk})
+        return reverse('issue_tracker:tasks_detail', kwargs={'pk': self.object.pk})
 
 
 class TaskDeleteView(LoginRequiredMixin, DeleteView):
@@ -58,4 +58,4 @@ class TaskDeleteView(LoginRequiredMixin, DeleteView):
     context_object_name = 'task'
 
     def get_success_url(self):
-        return reverse('projects_detail', kwargs={'pk': self.object.project_id})
+        return reverse('issue_tracker:projects_detail', kwargs={'pk': self.object.project_id})

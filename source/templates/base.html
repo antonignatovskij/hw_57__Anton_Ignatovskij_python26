@@ -14,21 +14,21 @@
 <body class="d-flex flex-column min-vh-100 bg-light">
 <header class="bg-white border-bottom">
     <nav aria-label="Основная навигация" class="container navbar py-3 gap-3">
-        <a class="navbar-brand mb-0" href="{% url 'projects_list' %}">Issue Tracker</a>
+        <a class="navbar-brand mb-0" href="{% url 'issue_tracker:projects_list' %}">Issue Tracker</a>
         <div class="d-flex flex-wrap align-items-center gap-3">
-            <a class="nav-link" href="{% url 'projects_list' %}">Проекты</a>
+            <a class="nav-link" href="{% url 'issue_tracker:projects_list' %}">Проекты</a>
             {% if request.user.is_authenticated %}
             {% block nav %}
-            <a class="nav-link" href="{% url 'projects_create' %}">Создать проект</a>
+            <a class="nav-link" href="{% url 'issue_tracker:projects_create' %}">Создать проект</a>
             {% endblock %}
             {% block menu_links %}{% endblock %}
             <span class="small text-body-secondary">Привет, {{ request.user.username }}!</span>
-            <form action="{% url 'logout' %}" method="post" class="m-0">
+            <form action="{% url 'accounts:logout' %}" method="post" class="m-0">
                 {% csrf_token %}
                 <button class="btn btn-outline-secondary btn-sm" type="submit">Выход</button>
             </form>
             {% else %}
-            <a class="btn btn-outline-primary btn-sm" href="{% url 'login' %}">Вход</a>
+            <a class="btn btn-outline-primary btn-sm" href="{% url 'accounts:login' %}">Вход</a>
             {% endif %}
         </div>
     </nav>

@@ -15,7 +15,7 @@
                         {% if request.user.is_authenticated %}
                         <button class="btn btn-danger btn-sm" type="submit">Удалить проект</button>
                         {% endif %}
-                        <a class="btn btn-outline-secondary btn-sm" href="{% url 'projects_detail' project.pk %}">Отмена</a>
+                        <a class="btn btn-outline-secondary btn-sm" href="{% url 'issue_tracker:projects_detail' project.pk %}">Отмена</a>
                     </div>
                 </form>
             </div>

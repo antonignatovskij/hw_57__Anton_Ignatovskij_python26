@@ -135,5 +135,5 @@ MAILERS = {
     },
 }
 
-LOGIN_REDIRECT_URL = 'projects_list'
-LOGOUT_REDIRECT_URL = 'projects_list'
+LOGIN_REDIRECT_URL = 'issue_tracker:projects_list'
+LOGOUT_REDIRECT_URL = 'issue_tracker:projects_list'
