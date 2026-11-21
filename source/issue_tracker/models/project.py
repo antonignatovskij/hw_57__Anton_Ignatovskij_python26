@@ -6,6 +6,7 @@ class Project(models.Model):
     ending_date = models.DateField(null=True, blank=True)
     name = models.CharField(max_length=200)
     description = models.TextField(max_length=500)
+    members = models.ManyToManyField('auth.User', related_name='members', blank=True, null=True)
 
     def __str__(self):
         return f'project:{self.pk} - {self.name[:40]}'

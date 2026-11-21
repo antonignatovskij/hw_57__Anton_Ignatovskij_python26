@@ -14,6 +14,17 @@
             <h2 class="h5" id="project-description-title">Описание</h2>
             {{ project.description|linebreaks }}
         </section>
+        <section class="border-top py-3 text-break">
+            <h2 class="h5" >Участники</h2>
+            {% for member in project.members.all %}
+                <span class="badge rounded-pill bg-light text-body-secondary border fw-normal text-wrap text-break">{{ member.username }}</span>
+            {% empty %}
+                <span class="small text-body-secondary">Нет участников</span>
+            {% endfor %}
+            <div class="mt-3">
+                <a class="btn btn-outline-secondary btn-sm" href="{% url 'issue_tracker:projects_memberships_update' project.pk%}">Редактирование участников</a>
+            </div>
+        </section>
         {% if request.user.is_authenticated %}
         <div aria-label="Действия с проектом" class="d-flex flex-wrap gap-2 border-top pt-3">
             <a class="btn btn-outline-secondary btn-sm" href="{% url 'issue_tracker:projects_update' project.pk %}">Редактировать проект</a>

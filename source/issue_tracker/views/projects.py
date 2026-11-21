@@ -3,7 +3,7 @@ from django.db.models import Q
 from django.urls import reverse, reverse_lazy
 from django.views.generic import CreateView, DeleteView, DetailView, ListView, UpdateView
 
-from issue_tracker.forms import ProjectForm, SimpleSearchForm
+from issue_tracker.forms import ProjectForm, SimpleSearchForm, MembersForm
 from issue_tracker.models import Project
 
 
@@ -79,3 +79,13 @@ class ProjectDeleteView(LoginRequiredMixin, DeleteView):
     template_name = 'projects/delete.html'
     context_object_name = 'project'
     success_url = reverse_lazy('issue_tracker:projects_list')
+
+
+class ProjectMembershipUpdateView(LoginRequiredMixin, UpdateView):
+    model = Project
+    template_name = 'projects/members_update.html'
+    context_object_name = 'project'
+    form_class = MembersForm
+
+    def get_success_url(self):
+        return reverse('issue_tracker:projects_detail', kwargs={'pk': self.object.pk})

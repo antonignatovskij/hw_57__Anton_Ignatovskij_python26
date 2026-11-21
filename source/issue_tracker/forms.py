@@ -70,3 +70,11 @@ class SimpleSearchForm(forms.Form):
             'placeholder': 'Название или описание проекта',
         }),
     )
+
+class MembersForm(forms.ModelForm):
+    class Meta:
+        model = Project
+        fields = ('members',)
+        widgets = {
+            'members': forms.CheckboxSelectMultiple(),
+        }
