@@ -4,7 +4,9 @@ from .projects import (
     ProjectDetailView,
     ProjectListView,
     ProjectUpdateView,
-    ProjectMembershipUpdateView,
+    ProjectMemberAddView,
+    ProjectMemberDeleteView,
+
 )
 from .tasks import (
     TaskCreationView,
@@ -23,5 +25,6 @@ __all__ = [
     'TaskCreationView',
     'TaskUpdateView',
     'TaskDeleteView',
-    'ProjectMembershipUpdateView',
+    'ProjectMemberAddView',
+    'ProjectMemberDeleteView',
 ]

@@ -1,9 +1,10 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db.models import Q
+from django.shortcuts import redirect
 from django.urls import reverse, reverse_lazy
 from django.views.generic import CreateView, DeleteView, DetailView, ListView, UpdateView
 
-from issue_tracker.forms import ProjectForm, SimpleSearchForm, MembersForm
+from issue_tracker.forms import ProjectForm, SimpleSearchForm, MemberAddForm, MemberDeleteForm
 from issue_tracker.models import Project
 
 
@@ -88,11 +89,29 @@ class ProjectDeleteView(LoginRequiredMixin, DeleteView):
     success_url = reverse_lazy('issue_tracker:projects_list')
 
 
-class ProjectMembershipUpdateView(LoginRequiredMixin, UpdateView):
+class ProjectMemberAddView(LoginRequiredMixin, UpdateView):
     model = Project
+    form_class = MemberAddForm
     template_name = 'projects/members_update.html'
     context_object_name = 'project'
-    form_class = MembersForm
+
+    def form_valid(self, form):
+        self.object.members.add(*form.cleaned_data['members'])
+        return redirect(self.get_success_url())
+
+    def get_success_url(self):
+        return reverse('issue_tracker:projects_detail', kwargs={'pk': self.object.pk})
+
+
+class ProjectMemberDeleteView(LoginRequiredMixin, UpdateView):
+    model = Project
+    form_class = MemberDeleteForm
+    template_name = 'projects/members_update.html'
+    context_object_name = 'project'
+
+    def form_valid(self, form):
+        self.object.members.remove(*form.cleaned_data['members'])
+        return redirect(self.get_success_url())
 
     def get_success_url(self):
         return reverse('issue_tracker:projects_detail', kwargs={'pk': self.object.pk})
